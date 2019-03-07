@@ -13,6 +13,7 @@ public class ToyStoreRunner
 {
 	public static void main( String args[] )
 	{
-
+            ToyStore test = new ToyStore("bill bill hey hey a a a a");
+            System.out.print(test);
 	}
 }
