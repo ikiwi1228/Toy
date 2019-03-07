@@ -21,38 +21,30 @@ public class ToyStore
 
         public ToyStore(String toys){
             toyList = new ArrayList<Toy>();
-            loadToys(toys);
+            for (String t: toys.split(" ")){
+                loadToys(t);
+            }
         }
         
 	public void loadToys( String toys )
 	{
-            Scanner input = new Scanner(toys);
-            while(input.hasNext()){
-                String x = input.next();
-                for (Toy t: toyList){
-                    if(t.getName().equals(x)){
-                        getThatToy(x);
-                }
-                    else{
-                        toyList.add(new Toy(x));
-                    }
-                }
+            Toy that = getThatToy(toys);
+            if (that == null){
+                toyList.add(new Toy(toys));
+            }
+            else{
+                that.setCount(that.getCount()+1);
             }
         }
   
   	public Toy getThatToy( String nm )
   	{
-            int ct = 1;
-            Toy git;
-            for (Toy t : toyList){
-                if (nm.equals(t.getName())){
-                    t.setCount(ct);
-                    ct++;
-                    git = t;
+            for (Toy toys:toyList){
+                if (toys.getName().equals(nm)){
+                    return toys;
                 }
             }
-            return git;
-
+            return null;
         }
   
   	public Toy getMostFrequentToy()
@@ -70,6 +62,7 @@ public class ToyStore
   
   	public void sortToysByCount()
   	{
+            Collections.sort(toyList,Collections.reverseOrder());
             
   	}  
   	  

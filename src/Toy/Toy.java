@@ -20,7 +20,7 @@ public class Toy
 	public Toy( String nm )
 	{
             setName(nm);
-            setCount(0);
+            setCount(1);
 	}
 	
 	public int getCount()
